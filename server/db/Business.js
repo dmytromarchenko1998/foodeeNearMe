@@ -35,8 +35,9 @@ const Business = mongoose.model('Business', businessSchema);
 // business.save();
 // var business = Business.create(stuff)
 // console.log(Business.drop(business));
-var query = Business.find({business_id:"-EohS3nXZGl6odE9Lx5BSw"});
-query.exec((err, businesses) => {
-  console.log(businesses[0]);
-})
+// var query = Business.find({business_id:'-153AjTW5luZPK4omEujWA'});
+//   query.exec((err, businesses) => {
+//     console.log(businesses[0].name);
+// })
+
 module.exports = Business;

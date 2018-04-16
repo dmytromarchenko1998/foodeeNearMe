@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 const mongoUri = 'mongodb://localhost:27017/business';
 const db = mongoose.connect(mongoUri);
-var stuff = require('../../../foodeeData/las-vegas-restaurants.js');
+const restaurants = require('../../../foodeeData/las-vegas-restaurants.js');
 // db.on('error', (err) => {console.log(err)});
 // console.log(typeof stuff[0].business_id)
 // console.log('shiiiiiiit')
@@ -33,7 +33,7 @@ const Business = mongoose.model('Business', businessSchema);
 
 // var business = new Business({business_id:stuff[0].business_id});
 // business.save();
-// var business = Business.create(stuff)
+// var business = Business.create(restaurants)
 // console.log(Business.drop(business));
 // var query = Business.find({business_id:'-153AjTW5luZPK4omEujWA'});
 //   query.exec((err, businesses) => {

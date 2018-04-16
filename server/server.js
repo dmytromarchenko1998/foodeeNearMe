@@ -5,12 +5,10 @@ const app = express();
 const port = process.env.PORT || 3005;
 const Business = require('./db/Business.js');
 
-// console.log(path.join(__dirname, '../public'));
 app.use(morgan('dev'));
 
 app.get('/api/:id', (req, res) => {
   var business_id = req.url.split('/api/:')[1];
-  // console.log(business_id);
   var query = Business.find({business_id:business_id});
   query.exec((err, businesses) => {
     var selectedBusiness = businesses[0];
@@ -22,16 +20,23 @@ app.get('/api/:id', (req, res) => {
       }
     }
     var query = Business.find({categories:{$in:categoryArr}});
-    query.limit(3);
     query.exec((err, businesses) => {
+      if (businesses.length > 3) {
+        for (var i = 0; i < businesses.length; i++) {
+          if (businesses[i].business_id === business_id) {
+            businesses.splice(i, 1);
+            i--;
+          }
+        }
+      }
       res.end(JSON.stringify([selectedBusiness, businesses]));
     })
   })
 })
 
 app.get('/biz/:id', (req, res) => {
-  var business_id = req.url.split('/biz/:')[1];
-  // console.log(buisness_id);
+  var business_id = req.url.split('/biz/');
+  // console.log(business_id);
   res.sendFile(path.join(__dirname, '../public/'))
 })
 app.use(express.static(path.join(__dirname, '../public/')));

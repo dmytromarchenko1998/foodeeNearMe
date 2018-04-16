@@ -1,0 +1,121 @@
+/*<---NearMe Container--->*/
+.nearMeContainer {
+  font-family: "arial";
+  background-color: #ffffff;
+  display: inline-flex;
+  flex-direction: column;
+  border-color: black;
+}
+
+.nearMeheader {
+  color:#d32323;
+  font-size: 16px;
+  line-height: 1.3125em;
+  font-weight: bold;
+}
+
+.nearMeFooter {
+  color:#0073bb;
+  font-size: 12px;
+}
+/*<---NearMe List--->*/
+
+.nearMeList {
+  list-style-type:none;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/*<---NearMe List Item--->*/
+
+.nearMeListItem {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.nearMeListItemDescription :first-child {
+  margin:2px 0px 0px 10px;
+  color: #0073bb;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nearMeListItemDescription :first-child:hover, .nearMeFooter :first-child:hover{
+  text-decoration: underline;
+}
+
+.nearMeListStars {
+  width: 82px;
+  height: 14px;
+  background: url(https://s3-us-west-1.amazonaws.com/foodeephotos/yelpStars.png?versionId=null) no-repeat;
+  background-size: 132px 560px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.nearMeRatings {
+  font-size: 12px;
+  line-height: 1.5em;
+  color: #666;
+  margin:2px 0px 0px 10px;
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.nearMeListItemDescription {
+  display: inline-flex;
+  flex-direction: column;
+  height: 80px;
+  margin: 0px;
+}
+
+.nearMeListItemImg {
+  object-fit: cover;
+  width:60px;
+  height:60px;
+  border-radius:5px;
+  display:inline-block;
+}
+
+/*<---NearMe Modal--->*/
+
+.nearMeModal {
+    display: none; /* Hidden by default */
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/*<---NearMe Modal Content--->*/
+
+.nearMeModalContent {
+  border-radius: 2px;
+  width: 80%;
+  height: 80%;
+  display: inline-block;
+  background-color: #ffffff;
+}
+
+.closeNearMeModal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeNearMeModal:hover,
+.closeNearMeModal:focus {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

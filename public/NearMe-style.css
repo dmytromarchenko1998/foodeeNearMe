@@ -41,6 +41,7 @@
 }
 .nearMeListItemDescription :first-child:hover, .nearMeFooter :first-child:hover{
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .nearMeListStars {
@@ -49,7 +50,6 @@
   background: url(https://s3-us-west-1.amazonaws.com/foodeephotos/yelpStars.png?versionId=null) no-repeat;
   background-size: 132px 560px;
   display: inline-block;
-  vertical-align: middle;
   padding-right: 5px;
 }
 
@@ -79,43 +79,133 @@
 
 /*<---NearMe Modal--->*/
 
-.nearMeModal {
-    display: none; /* Hidden by default */
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+.nearMeModalPage {
+  display: none;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 /*<---NearMe Modal Content--->*/
 
-.nearMeModalContent {
-  border-radius: 2px;
-  width: 80%;
-  height: 80%;
-  display: inline-block;
+.nearMeModalContainer {
+  display: flex;
+  flex-flow: column;
+  border-radius: 3px;
+  max-width: 82vw;
   background-color: #ffffff;
+  max-height: calc(100vh - 100px);
+  box-shadow: 0px 0px 10px #59595a;
+}
+
+.nearMeModalHeader {
+  text-align: center;
+  width: 100%;
+}
+
+.nearMeModalHeader :first-child {
+  font-weight: bold;
+  color: #d32323;
+  margin: 0px;
+}
+
+.nearMeModalContent {
+  display: flex;
+  flex-flow: column;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.nearMeModalRow {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.nearMeModalItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  height: 20vw;
+}
+
+.nearMeModalItemContent {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  background: url(https://s3-us-west-1.amazonaws.com/foodeephotos/-JfncbVURtvuzBbof40o1w.jpg) no-repeat;
+  background-size:cover;
+  width: 19vw;
+  height: 19vw;
+  border-radius: 5px;
+  background-position: center center;
+}
+
+.nearMeModalItemContent:hover {
+  box-shadow: 0px 0px 5px black;
+}
+
+.nearMeModalItemDescription {
+  background-color: rgba(0,0,0,0.4);
+  width: 19vw;
+  color: white;
+  font-size: .8vw;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .closeNearMeModal {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  display: inline-flex;
+  position: relative;
+  top: -4vh;
+  line-height: 0px;
+  align-self: flex-end;
+  padding:0px 7px;
+  color: #999999;
+  line-height: 
+  font-weight: bold;
+  align-items: center;
+  margin: 0px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.8);
+  text-decoration: none;
+  text-align: right;
+  font-weight: bold;
+}
+
+#xicon {
+  font-size: 30px;
+  margin: 0px;
+}
+
+.nearMeModalItemDescription > .nearMeRatings {
+  color: white;
+}
+
+.nearMeModalItemDescription :first-child {
+  padding-left: .5vw;
+  font-size: 1vw;
+  line-height: 0;
+  font-weight: bold;
+}
+
+.nearMeModalItemDescription :first-child:hover {
+  color: #f3f1f4;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .closeNearMeModal:hover,
 .closeNearMeModal:focus {
     cursor: pointer;
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }

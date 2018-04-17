@@ -23,7 +23,7 @@ export default class NearMe extends React.Component {
   }
   
   toggleModal(){
-    var modal = document.getElementsByClassName('nearMeModal')[0];
+    var modal = document.getElementsByClassName('nearMeModalPage')[0];
     if (modal.style.display === 'flex') {
       modal.style.display = 'none';
     } else {
@@ -55,10 +55,10 @@ export default class NearMe extends React.Component {
 
 const NearMeModal = (props) => {
   return (
-    <div class="nearMeModal">
-      <div class="nearMeModalContent">
-        <span onClick={props.toggleModal} class="closeNearMeModal">&times;</span>
-        <p>Some text in the Modal..</p>
+    <div class="nearMeModalPage">
+      <div class="nearMeModalContainer">
+        <p onClick={props.toggleModal} class="closeNearMeModal"><p>Close</p><p id="xicon">  &times;</p></p>
+        <NearMeModalContent />
       </div>
     </div>
   )
@@ -67,9 +67,47 @@ const NearMeModal = (props) => {
 const NearMeModalContent = (props) => {
   return (
     <div class="nearMeModalContent">
-      <span class="closeNearMeModal">&times;</span>
-      <p>Some text in the Modal..</p>
+      <NearMeModalRow />
     </div>
+  )
+}
+
+const NearMeModalRow = (props) => {
+  return (
+
+    <div className="nearMeModalRow">
+      <div className="nearMeModalHeader">
+        <p>All "category name here" Nearby</p>
+      </div>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+      <NearMeModalItem/>
+    </div>
+  )
+}  
+
+const NearMeModalItem = (props) => {
+  return (
+  <div className="nearMeModalItem">
+    <div className="nearMeModalItemContent">
+      <div className="nearMeModalItemDescription">
+        <p>restaurant name here</p>
+        <NearMeRatings rating={4} numberOfRatings={4} />
+      </div>
+    </div>
+  </div>
   )
 }
 
@@ -104,5 +142,10 @@ const NearMeRatings = (props) => {
     starPosition += ((rating * 2 * -14) + 14);
   }
   var percentage = props.rating/5 * 100;
-  return (<p className="nearMeRatings"> <span style={{'background-position-y':starPosition + 'px'}} className="nearMeListStars"></span> {props.numberOfRatings} reviews</p>)
+  return (
+    <span className="nearMeRatings"> 
+      <span style={{'background-position-y':starPosition + 'px'}} className="nearMeListStars"></span>
+       {props.numberOfRatings} reviews
+    </span>
+  )
 }

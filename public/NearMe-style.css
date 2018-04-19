@@ -155,8 +155,13 @@
 }
 
 .nearMeModalItemDescription {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
   background-color: rgba(0,0,0,0.4);
+  text-overflow: ellipsis;
   width: 19vw;
+  height: 3vw;
   color: white;
   font-size: .8vw;
   border-radius: 0px 0px 5px 5px;
@@ -186,17 +191,22 @@
 }
 
 .nearMeModalItemDescription > .nearMeRatings {
+  padding-top: .2vw;
+  display: block;
   color: white;
 }
 
-.nearMeModalItemDescription :first-child {
+.nearMeModalItemDescription > a {
+  padding-top: .5vw;
   padding-left: .5vw;
+  color: white;
   font-size: 1vw;
   line-height: 0;
   font-weight: bold;
+  text-decoration: none;
 }
 
-.nearMeModalItemDescription :first-child:hover {
+.nearMeModalItemDescription > a:hover {
   color: #f3f1f4;
   text-decoration: underline;
   cursor: pointer;

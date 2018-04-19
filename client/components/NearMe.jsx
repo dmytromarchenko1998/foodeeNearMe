@@ -35,7 +35,7 @@ export default class NearMe extends React.Component {
     if (this.state.nearby) { 
       return (
         <div className='nearMeContainer'>
-          <NearMeModal toggleModal={this.toggleModal} nearby={this.state.nearby} />
+          <NearMeModal toggleModal={this.toggleModal} nearby={this.state.nearby} category={this.state.category} />
           <div className="nearMeheader">
             <p>Other {this.state.category} Nearby</p>
           </div>
@@ -58,7 +58,7 @@ const NearMeModal = (props) => {
     <div class="nearMeModalPage">
       <div class="nearMeModalContainer">
         <p onClick={props.toggleModal} class="closeNearMeModal"><p>Close</p><p id="xicon">  &times;</p></p>
-        <NearMeModalContent />
+        <NearMeModalContent category={props.category} nearby={props.nearby} />
       </div>
     </div>
   )
@@ -67,33 +67,14 @@ const NearMeModal = (props) => {
 const NearMeModalContent = (props) => {
   return (
     <div class="nearMeModalContent">
-      <NearMeModalRow />
-    </div>
-  )
-}
-
-const NearMeModalRow = (props) => {
-  return (
-
-    <div className="nearMeModalRow">
-      <div className="nearMeModalHeader">
-        <p>All "category name here" Nearby</p>
+      <div className="nearMeModalRow">
+        <div className="nearMeModalHeader">
+          <p>All {props.category} Nearby</p>
+        </div>
+        {props.nearby.map((restaurant) => (
+          <NearMeModalItem restaurant={restaurant}/>
+        ))}
       </div>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
-      <NearMeModalItem/>
     </div>
   )
 }  
@@ -103,8 +84,8 @@ const NearMeModalItem = (props) => {
   <div className="nearMeModalItem">
     <div className="nearMeModalItemContent">
       <div className="nearMeModalItemDescription">
-        <p>restaurant name here</p>
-        <NearMeRatings rating={4} numberOfRatings={4} />
+        <a href={"http://localhost:3005/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
+        <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
       </div>
     </div>
   </div>

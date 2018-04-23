@@ -31,8 +31,6 @@ const businessSchema = new mongoose.Schema({
 
 const Business = mongoose.model('Business', businessSchema);
 
-// var business = new Business({business_id:stuff[0].business_id});
-// business.save();
 // var business = Business.create(restaurants)
 // console.log(Business.drop(business));
 // var query = Business.find({business_id:'-153AjTW5luZPK4omEujWA'});

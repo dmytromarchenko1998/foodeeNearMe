@@ -29,6 +29,7 @@ app.get('/api/:id', (req, res) => {
           }
         }
       }
+      console.log(JSON.stringify([selectedBusiness, businesses]));
       res.end(JSON.stringify([selectedBusiness, businesses]));
     })
   })

@@ -142,7 +142,7 @@
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
-  background: url(https://s3-us-west-1.amazonaws.com/foodeephotos/-JfncbVURtvuzBbof40o1w.jpg) no-repeat;
+  background: no-repeat;
   background-size:cover;
   width: 19vw;
   height: 19vw;

@@ -7,7 +7,6 @@ class NearMe extends React.Component {
     super();
     this.state = {
       category:'',
-      // business_id:"-BmqghX1sv7sgsxOIS2yAg",
       business_id:document.URL.split('/biz/')[1],
       nearby:undefined    
     };
@@ -17,7 +16,7 @@ class NearMe extends React.Component {
     $.ajax({
       url:'http://localhost:3005/api/' + this.state.business_id,
       method: 'get',
-      headers: {'Access-Control-Allow-Origin': '*'},
+      headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': true, 'Access-Control-Allow-Methods': 'GET'},
       success: (data) => {
         var data = JSON.parse(data);
         this.setState({nearby:data[1], category:data[0].categories[0]});
@@ -87,7 +86,7 @@ const NearMeModalItem = (props) => {
   <div className="nearMeModalItem">
     <div style={{background: "url(https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id + ".jpg)"}} className="nearMeModalItemContent">
       <div className="nearMeModalItemDescription">
-        <a href={"http://localhost:3005/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
+        <a href={"http://localhost:3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
         <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
       </div>
     </div>
@@ -113,7 +112,7 @@ const NearMeListItem = (props) => (
       <img className="nearMeListItemImg" src={"https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id +".jpg"}/>
     </div>
     <div className="nearMeListItemDescription">
-      <a href={"http://localhost:3005/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
+      <a href={"http://localhost:3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
       <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
     </div>
   </li>

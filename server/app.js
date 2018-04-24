@@ -4,9 +4,14 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3005;
 const Business = require('./db/Business.js');
+const cors = require('cors');
 
 app.use(morgan('dev'));
-
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*')
+//   next();
+// })
+app.use(cors({'origin':'*'}));
 app.get('/api/:id', (req, res) => {
   var business_id = req.url.split('/api/')[1];
   var query = Business.find({business_id:business_id});
@@ -36,7 +41,7 @@ app.get('/api/:id', (req, res) => {
 })
 
 app.get('/biz/:id', (req, res) => {
-  var business_id = req.url.split('/biz/');
+  // var business_id = req.url.split('/biz/');
   // console.log(business_id);
   res.sendFile(path.join(__dirname, '../public/'))
 })

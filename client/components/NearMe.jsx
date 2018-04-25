@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
-export default class NearMe extends React.Component {
+class NearMe extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -13,8 +14,9 @@ export default class NearMe extends React.Component {
 
   componentDidMount(){
     $.ajax({
-      url:'/api/:' + this.state.business_id,
+      url:'http://localhost:3005/api/' + this.state.business_id,
       method: 'get',
+      headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': true, 'Access-Control-Allow-Methods': 'GET'},
       success: (data) => {
         var data = JSON.parse(data);
         this.setState({nearby:data[1], category:data[0].categories[0]});
@@ -55,9 +57,9 @@ export default class NearMe extends React.Component {
 
 const NearMeModal = (props) => {
   return (
-    <div class="nearMeModalPage">
-      <div class="nearMeModalContainer">
-        <p onClick={props.toggleModal} class="closeNearMeModal"><p>Close</p><p id="xicon">  &times;</p></p>
+    <div className="nearMeModalPage">
+      <div className="nearMeModalContainer">
+        <span onClick={props.toggleModal} className="closeNearMeModal"><p>Close</p><p id="xicon">  &times;</p></span>
         <NearMeModalContent category={props.category} nearby={props.nearby} />
       </div>
     </div>
@@ -66,13 +68,13 @@ const NearMeModal = (props) => {
 
 const NearMeModalContent = (props) => {
   return (
-    <div class="nearMeModalContent">
+    <div className="nearMeModalContent">
       <div className="nearMeModalRow">
         <div className="nearMeModalHeader">
           <p>All {props.category} Nearby</p>
         </div>
-        {props.nearby.map((restaurant) => (
-          <NearMeModalItem restaurant={restaurant}/>
+        {props.nearby.map((restaurant, index) => (
+          <NearMeModalItem restaurant={restaurant} key={index}/>
         ))}
       </div>
     </div>
@@ -82,9 +84,9 @@ const NearMeModalContent = (props) => {
 const NearMeModalItem = (props) => {
   return (
   <div className="nearMeModalItem">
-    <div className="nearMeModalItemContent">
+    <div style={{background: "url(https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id + ".jpg)"}} className="nearMeModalItemContent">
       <div className="nearMeModalItemDescription">
-        <a href={"http://localhost:3005/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
+        <a href={"http://localhost:3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
         <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
       </div>
     </div>
@@ -110,7 +112,7 @@ const NearMeListItem = (props) => (
       <img className="nearMeListItemImg" src={"https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id +".jpg"}/>
     </div>
     <div className="nearMeListItemDescription">
-      <a href={"http://localhost:3005/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
+      <a href={"http://localhost:3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
       <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
     </div>
   </li>
@@ -125,8 +127,10 @@ const NearMeRatings = (props) => {
   var percentage = props.rating/5 * 100;
   return (
     <span className="nearMeRatings"> 
-      <span style={{'background-position-y':starPosition + 'px'}} className="nearMeListStars"></span>
+      <span style={{'backgroundPositionY':starPosition + 'px'}} className="nearMeListStars"></span>
        {props.numberOfRatings} reviews
     </span>
   )
 }
+
+export default NearMe;

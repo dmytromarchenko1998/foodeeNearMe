@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const mongoUri = 'mongodb://database/business';
+const mongoUri = 'mongodb://localhost/business';
 const db = mongoose.connect(mongoUri);
 
 const businessSchema = new mongoose.Schema({

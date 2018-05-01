@@ -136,6 +136,6 @@ const NearMeRatings = (props) => {
   )
 }
 
-// ReactDOM.render(<NearMe />, document.getElementById('NearMe'));
+ReactDOM.render(<NearMe />, document.getElementById('NearMe'));
 
 export default NearMe;

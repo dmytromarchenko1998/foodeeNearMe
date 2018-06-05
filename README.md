@@ -38,6 +38,6 @@ npm start
 
 5. if everything worked it should look like this when you visit http://localhost:3005/biz/-iFvYhgysvjkxckCr42NRw/
 
-![alt text](https://github.com/foodees/NearMe-service/new/master/NearMeSideBarView.png "NearMeSideBarView")
+![alt text](https://github.com/foodees/NearMe-service/blob/master/NearMeSideBarView.png "NearMeSideBarView")
 
-![alt text](https://github.com/foodees/NearMe-service/new/master/NearMeModalView.png "NearMeModalView")
+![alt text](https://github.com/foodees/NearMe-service/blob/master/NearMeModalView.png "NearMeModalView")

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 mongoose.Promise = global.Promise;
 const mongoUri = 'mongodb://localhost/business';
 const db = mongoose.connect(mongoUri);
@@ -12,13 +13,13 @@ const businessSchema = new mongoose.Schema({
   state: String,
   postal_code: String,
   latitude: Number,
-  longitude:Number,
+  longitude: Number,
   stars: Number,
   review_count: Number,
   is_open: Number,
   attributes: Object,
   categories: Array,
-  hours:Object
+  hours: Object,
 });
 
 const Business = mongoose.model('Business', businessSchema);

@@ -1,4 +1,5 @@
 node_modules
 api_keys.js
 public/app.js
-coverage/
+coverage/*
+Icov-report/

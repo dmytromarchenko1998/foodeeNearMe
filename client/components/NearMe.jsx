@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import NearMeList from "./NearMeList.jsx";
+import NearMeModal from "./NearMeModal.jsx";
 
 class NearMe extends React.Component {
   constructor() {
@@ -56,84 +58,6 @@ class NearMe extends React.Component {
       return (<p></p>)
     }
   }
-}
-
-const NearMeModal = (props) => {
-  return (
-    <div className="nearMeModalPage">
-      <div className="nearMeModalContainer">
-        <span onClick={props.toggleModal} className="closeNearMeModal"><p>Close</p><p id="xicon">  &times;</p></span>
-        <NearMeModalContent host={props.host} category={props.category} nearby={props.nearby} />
-      </div>
-    </div>
-  )
-}
-
-const NearMeModalContent = (props) => {
-  return (
-    <div className="nearMeModalContent">
-      <div className="nearMeModalRow">
-        <div className="nearMeModalHeader">
-          <p>All {props.category} Nearby</p>
-        </div>
-        {props.nearby.map((restaurant, index) => (
-          <NearMeModalItem host={props.host} restaurant={restaurant} key={index}/>
-        ))}
-      </div>
-    </div>
-  )
-}  
-
-const NearMeModalItem = (props) => {
-  return (
-  <div className="nearMeModalItem">
-    <div style={{background: "url(https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id + ".jpg)"}} className="nearMeModalItemContent">
-      <div className="nearMeModalItemDescription">
-        <a href={"http:" + props.host + ":3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
-        <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
-      </div>
-    </div>
-  </div>
-  )
-}
-
-const NearMeList = (props) => ( 
-  <ul className="nearMeList">
-    {props.nearby.map((restaurant, index) => { 
-      if (index < 3) {
-        return (
-          <NearMeListItem host={props.host} restaurant={restaurant} key={index}/>
-        )
-      }
-    })}
-  </ul>
-); 
-
-const NearMeListItem = (props) => (
-  <li className="nearMeListItem">
-    <div>
-      <img className="nearMeListItemImg" src={"https://s3-us-west-1.amazonaws.com/foodeephotos/" + props.restaurant.business_id +".jpg"}/>
-    </div>
-    <div className="nearMeListItemDescription">
-      <a href={"http:" + props.host + ":3000/biz/" + props.restaurant.business_id}>{props.restaurant.name}</a>
-      <NearMeRatings rating={props.restaurant.stars} numberOfRatings={props.restaurant.review_count} />
-    </div>
-  </li>
-);
-
-const NearMeRatings = (props) => {
-  var rating = props.rating;
-  var starPosition = -420;
-  if (rating >= 1) {
-    starPosition += ((rating * 2 * -14) + 14);
-  }
-  var percentage = props.rating/5 * 100;
-  return (
-    <span className="nearMeRatings"> 
-      <span style={{'backgroundPositionY':starPosition + 'px'}} className="nearMeListStars"></span>
-      <span className="nearMeListReviesDesc" >{props.numberOfRatings} reviews</span>
-    </span>
-  )
 }
 
 ReactDOM.render(<NearMe />, document.getElementById('NearMe'));

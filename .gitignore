@@ -3,3 +3,4 @@ api_keys.js
 public/app.js
 coverage/*
 Icov-report/
+package-lock.json

@@ -15,7 +15,7 @@ class NearMe extends React.Component {
 
   componentDidMount(){
     $.ajax({
-      url:'http:' + this.state.host + ':3005/api/' + this.state.business_id,
+      url:'http://localhost:3005/api/' + this.state.business_id,
       method: 'GET',
       contentType: "application/json",
       data: {ip:this.state.host},

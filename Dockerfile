@@ -6,7 +6,7 @@ WORKDIR /src/app
 
 COPY . /src/app
 
-RUN sudo npm install
+RUN yarn install
 
 EXPOSE 3005
 

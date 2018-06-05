@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import NearMeList from './NearMeList.jsx';
 import NearMeModal from './NearMeModal.jsx';
+import NearMeList from './NearMeList.jsx';
 
 class NearMe extends React.Component {
   constructor() {
@@ -23,7 +23,7 @@ class NearMe extends React.Component {
       data: { ip: this.state.host },
       headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': true, 'Access-Control-Allow-Methods': 'GET' },
       success: (data) => {
-        data = JSON.parse(data);
+        var data = JSON.parse(data);
         this.setState({ nearby: data[1], category: data[0].categories[0] });
       },
     });

@@ -11,4 +11,4 @@ const NearMeModalItem = props => (
   </div>
 );
 
-export default NearMeRatings;
+export default NearMeModalItem;
